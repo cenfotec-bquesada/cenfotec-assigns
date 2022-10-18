@@ -97,7 +97,9 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,Description,Picture")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind
+            ("CategoryId,CategoryName,Description,Picture")] Category category,
+            IFormFile picture)
         {
             if (id != category.CategoryId)
             {
@@ -108,6 +110,13 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (picture != null)
+                    {
+                        // using System.IO;
+                        using MemoryStream ms = new();
+                        picture.CopyTo(ms);
+                        category.Picture = ms.ToArray();
+                    }
                     _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
