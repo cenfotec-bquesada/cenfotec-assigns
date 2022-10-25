@@ -1,0 +1,14 @@
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Release\net6.0\Northwind.Store.Model.deps.json
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Release\net6.0\Northwind.Store.Model.runtimeconfig.json
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Release\net6.0\Northwind.Store.Model.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Release\net6.0\Northwind.Store.Model.pdb
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.csproj.AssemblyReference.cache
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.AssemblyInfoInputs.cache
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.AssemblyInfo.cs
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.csproj.CoreCompileInputs.cache
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\refint\Northwind.Store.Model.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.pdb
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\Northwind.Store.Model.genruntimeconfig.cache
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Release\net6.0\ref\Northwind.Store.Model.dll
