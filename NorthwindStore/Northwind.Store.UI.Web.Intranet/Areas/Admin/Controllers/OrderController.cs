@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Store.Data;
 using Northwind.Store.Model;
+using X.PagedList;
 
 namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
 {
@@ -21,36 +22,14 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         }
 
         // GET: Order
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            //View(await _context.Order.ToListAsync())
-            return View(this.GetOrders(1));
-        }
+            var pageNumber = page ?? 1;
 
-        [HttpPost]
-        public IActionResult Index(int currentPageIndex)
-        {
-            return View(this.GetOrders(currentPageIndex));
-        }
+            var products = _context.Orders
+                .ToPagedList(pageNumber, 10);
 
-        private OrderModel GetOrders(int currentPage)
-        {
-            int maxRows = 10;
-
-            OrderModel orderModel = new OrderModel();
-
-            orderModel.Orders = (from orders in _context.Orders
-                                 select orders)
-                        .OrderBy(orders => orders.OrderId)
-                        .Skip((currentPage - 1) * maxRows)
-                        .Take(maxRows).ToList();
-
-            double pageCount = (double)((decimal)_context.Orders.Count() / Convert.ToDecimal(maxRows));
-            orderModel.PageCount = (int)Math.Ceiling(pageCount);
-
-            orderModel.CurrentPageIndex = currentPage;
-
-            return orderModel;
+            return View(products);
         }
 
         // GET: Order/Details/5

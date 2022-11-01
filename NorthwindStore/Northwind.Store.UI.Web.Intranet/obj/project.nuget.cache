@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/mshaCcxEeeg3P6B6MljDG3FvTOfzvKkj/4z/Joh2H/LQGCLcpRJ2oElRpFPvfIcJ0bE+Be112h6N4OUL3bAbQ==",
+  "dgSpecHash": "LSoCTUrD2kkdXDAJlf/dIREU0DjBPvZOy13gs3EBJIt1JIB2dgR8hCV1mEf7QyXWJXkqqghZ25eV8FW9MR3ALQ==",
   "success": true,
   "projectFilePath": "C:\\Git\\cenfotec\\NorthwindStore\\Northwind.Store.UI.Web.Intranet\\Northwind.Store.UI.Web.Intranet.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ByronQuesada\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\ByronQuesada\\.nuget\\packages\\jetbrains.annotations\\2022.1.0\\jetbrains.annotations.2022.1.0.nupkg.sha512",
     "C:\\Users\\ByronQuesada\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\ByronQuesada\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\ByronQuesada\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
@@ -182,7 +183,9 @@
     "C:\\Users\\ByronQuesada\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\ByronQuesada\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\ByronQuesada\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\ByronQuesada\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\ByronQuesada\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\ByronQuesada\\.nuget\\packages\\x.pagedlist\\8.4.3\\x.pagedlist.8.4.3.nupkg.sha512",
+    "C:\\Users\\ByronQuesada\\.nuget\\packages\\x.pagedlist.mvc.core\\8.4.3\\x.pagedlist.mvc.core.8.4.3.nupkg.sha512"
   ],
   "logs": []
 }

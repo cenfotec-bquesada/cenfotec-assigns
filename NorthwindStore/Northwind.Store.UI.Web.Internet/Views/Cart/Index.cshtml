@@ -1,0 +1,46 @@
+﻿@using Northwind.Store.Model
+@model Northwind.Store.UI.Web.Internet.ViewModels.CartViewModel
+
+@{
+    var pa = (Product)ViewBag.productAdded;
+    var paName = TempData["ProductName"];
+}
+
+@{
+    ViewData["Title"] = "Compras";
+}
+
+@if (pa != null)
+{
+    <div class="alert alert-info" role="alert">
+        Nuevo producto agregado: @pa.ProductName!
+    </div>
+}
+
+@if (Model != null && Model.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr><th>Producto</th><th>Precio</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Items)
+            {
+                <tr>
+                    <td>@p.ProductName</td>
+                    <td>@p.UnitPrice?.ToString("n")</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr><th>Items Count</th><td>@Model.Count</td></tr>
+            <tr><th>Items Total</th><td>@Model.Total.ToString("n")</td></tr>
+        </tfoot>
+    </table>
+
+    <a asp-controller="Cart" asp-action="Buy" class="btn btn-success position-relative">Comprar</a>
+}
+else
+{
+    <h3>El carrito de compras esta actualmente vacio! 😮</h3>
+}

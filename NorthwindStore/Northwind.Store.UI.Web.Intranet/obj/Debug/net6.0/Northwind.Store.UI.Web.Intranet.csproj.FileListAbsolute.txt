@@ -277,3 +277,6 @@ C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Debug\net6.0\
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Debug\net6.0\bundleconfig.json
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Debug\net6.0\libman.json
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Debug\net6.0\JetBrains.Annotations.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Debug\net6.0\X.PagedList.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll

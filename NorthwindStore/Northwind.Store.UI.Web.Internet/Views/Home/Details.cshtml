@@ -1,0 +1,26 @@
+﻿@model Northwind.Store.Model.Product
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<h1>Detalle del producto</h1>
+<hr />
+<div class="row">
+    <div class="col-6">
+        <h3>@Model.ProductName</h3>
+        <h3>@Model.UnitPrice</h3>
+        <h3>@Model.QuantityPerUnit</h3>
+        <h5>@Model.Category.CategoryName</h5>
+        <h5>@Model.Supplier.CompanyName</h5>
+    </div>
+    <div class="col-6">
+        <div class="col-6">
+            <img style="max-height: 50px" src="@Url.Action("ReadImage", new { id = Model.CategoryId })"
+                 alt="Imagen de @Model.Category.CategoryName" />
+        </div>
+        <div class="col-6">
+            <a asp-controller="Cart" asp-action="Add" class="btn btn-success position-relative" asp-route-id="@Model?.ProductId">Agregar</a>
+        </div>
+    </div>
+</div>

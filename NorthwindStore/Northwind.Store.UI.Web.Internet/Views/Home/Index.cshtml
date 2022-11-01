@@ -1,0 +1,44 @@
+﻿@model IPagedList<Northwind.Store.Model.Product>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Web.Common
+
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+@{
+    var filter = ViewBag.filter;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido</h1>
+    <p>Contamos con gran variedad de articulos.</p>
+
+    <form asp-action="Index">
+        <input name="filter" placeholder="type here..." value="@filter" />
+    </form>
+
+</div>
+
+<br />
+
+@if (Model != null)
+{
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <a asp-action="Details" asp-route-id="@item.ProductId" class="list-group-item list-group-item-action">
+                <p>@item.ProductName</p>
+                <p>@item.UnitPrice</p>
+            </a>
+        }
+    </div>
+    <br />
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }),
+    new PagedListRenderOptions
+        {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    })
+}

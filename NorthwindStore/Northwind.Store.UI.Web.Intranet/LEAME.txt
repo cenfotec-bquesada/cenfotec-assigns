@@ -1,6 +1,9 @@
 ﻿Microsoft.EntityFrameworkCore.Design
 Microsoft.EntityFrameworkCore.SQLServer
 Microsoft.AspNetCore.Mvc.Core
+Microsoft.Web.LibraryManager.Build
+
+X.PagedList.Mvc.Core
 
 dotnet tool update --global dotnet-ef 
 
