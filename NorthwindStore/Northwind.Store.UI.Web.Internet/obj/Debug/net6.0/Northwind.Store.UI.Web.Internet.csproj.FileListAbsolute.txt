@@ -277,3 +277,7 @@ C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\obj\Debug\net6.0\
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\obj\Debug\net6.0\Northwind.Store.UI.Web.Internet.pdb
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\obj\Debug\net6.0\Northwind.Store.UI.Web.Internet.genruntimeconfig.cache
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\obj\Debug\net6.0\ref\Northwind.Store.UI.Web.Internet.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\bin\Debug\net6.0\System.Linq.Dynamic.Core.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\bin\Debug\net6.0\Northwind.Store.Notification.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\bin\Debug\net6.0\Northwind.Store.Notification.pdb
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Internet\bin\Debug\net6.0\System.Text.Json.dll

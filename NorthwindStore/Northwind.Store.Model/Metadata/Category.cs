@@ -5,8 +5,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Northwind.Store.Model
 {
     [ModelMetadataType(typeof(CategoryMetadata))]
-    public partial class Category
+    public partial class Category : ModelBase
     {
+        [NotMapped]
+        public string PictureBase64
+        {
+            get
+            {
+                var result = "";
+                if (Picture != null)
+                {
+                    var base64 = Convert.ToBase64String(Picture);
+                    result = $"data:image/jpg;base64,{base64}";
+                }
+                return result;
+            }
+        }
+
         public class CategoryMetadata
         {
             [Display(Name = "Nombre de Categoria")]
