@@ -1,7 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Northwind.Store.Model.Order>
+
 @{
+    ViewData["Title"] = "Index";
 }
 
-<h1>Admin - Home - Index</h1>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Contact Name
+                </th>
+                <th>
+                    Order Date
+                </th>
+                <th>
+                    Ship City
+                </th>
+                <th>
+                    Ship Country
+                </th>
+                <th>
+                    Total
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Customer.ContactName
+                    </td>
+                    <td>
+                        @item.OrderDate
+                    </td>
+                    <td>
+                        @item.ShipCity
+                    </td>
+                    <td>
+                        @item.ShipCountry
+                    </td>
+                    <td>
+                        @item.OrderDetails.Count()
+                    </td>
+                    <td>
+                        <a asp-controller="Order" asp-action="Details" asp-route-id="@item.OrderId">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

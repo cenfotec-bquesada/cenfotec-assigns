@@ -277,3 +277,10 @@ C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\obj\Release\net6.
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\obj\Release\net6.0\Northwind.Store.UI.Web.Intranet.pdb
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\obj\Release\net6.0\Northwind.Store.UI.Web.Intranet.genruntimeconfig.cache
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\obj\Release\net6.0\ref\Northwind.Store.UI.Web.Intranet.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\JetBrains.Annotations.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\System.Linq.Dynamic.Core.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\System.Text.Json.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\X.PagedList.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\X.PagedList.Mvc.Core.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\Northwind.Store.Notification.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\Northwind.Store.Notification.pdb

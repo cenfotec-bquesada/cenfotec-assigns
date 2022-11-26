@@ -13,31 +13,28 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
     [Area("Admin")]
     public class RegionController : Controller
     {
-        private readonly NWContext _context;
+        private readonly BaseRepository<Region, int> _repo;
 
-        public RegionController(NWContext context)
+        public RegionController(BaseRepository<Region, int> repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: Region
         public async Task<IActionResult> Index()
         {
-              return _context.Regions != null ? 
-                          View(await _context.Regions.ToListAsync()) :
-                          Problem("Entity set 'NWContext.Regions'  is null.");
+            return View(await _repo.GetList());
         }
 
         // GET: Region/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Regions == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var region = await _context.Regions
-                .FirstOrDefaultAsync(m => m.RegionId == id);
+            var region = await _repo.Get(id.Value);
             if (region == null)
             {
                 return NotFound();
@@ -61,8 +58,8 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(region);
-                await _context.SaveChangesAsync();
+                region.State = Model.ModelState.Added;
+                await _repo.Save(region);
                 return RedirectToAction(nameof(Index));
             }
             return View(region);
@@ -71,12 +68,12 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // GET: Region/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Regions == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var region = await _context.Regions.FindAsync(id);
+            var region = await _repo.Get(id.Value);
             if (region == null)
             {
                 return NotFound();
@@ -98,22 +95,9 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(region);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RegionExists(region.RegionId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                region.State = Model.ModelState.Modified;
+                await _repo.Save(region);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(region);
@@ -122,13 +106,13 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // GET: Region/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Regions == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var region = await _context.Regions
-                .FirstOrDefaultAsync(m => m.RegionId == id);
+            var region = await _repo.Get(id.Value);
+
             if (region == null)
             {
                 return NotFound();
@@ -142,23 +126,8 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Regions == null)
-            {
-                return Problem("Entity set 'NWContext.Regions'  is null.");
-            }
-            var region = await _context.Regions.FindAsync(id);
-            if (region != null)
-            {
-                _context.Regions.Remove(region);
-            }
-            
-            await _context.SaveChangesAsync();
+            await _repo.Delete(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool RegionExists(int id)
-        {
-          return (_context.Regions?.Any(e => e.RegionId == id)).GetValueOrDefault();
         }
     }
 }

@@ -26,10 +26,11 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         {
             var pageNumber = page ?? 1;
 
-            var products = _context.Orders
+            var orders = _context.Orders
+                .Include(o => o.OrderDetails)
                 .ToPagedList(pageNumber, 10);
 
-            return View(products);
+            return View(orders);
         }
 
         // GET: Order/Details/5
@@ -41,6 +42,7 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
             }
 
             var order = await _context.Orders
+                .Include(o => o.OrderDetails)
                 .Include(o => o.Customer)
                 .Include(o => o.Employee)
                 .Include(o => o.ShipViaNavigation)

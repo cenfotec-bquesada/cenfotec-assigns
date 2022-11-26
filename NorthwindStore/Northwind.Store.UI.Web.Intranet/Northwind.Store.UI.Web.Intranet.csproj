@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\NorthwindClases\Northwind.Store.Notification\Northwind.Store.Notification.csproj" />
     <ProjectReference Include="..\Northwind.Store.Data\Northwind.Store.Data.csproj" />
     <ProjectReference Include="..\Northwind.Store.Model\Northwind.Store.Model.csproj" />
   </ItemGroup>

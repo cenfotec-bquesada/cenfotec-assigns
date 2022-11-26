@@ -15,7 +15,7 @@ namespace Northwind.Store.Data
     /// Clase base la gestión del acceso a los datos. Incluye métodos básicos para el acceso a los datos.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class BaseRepository<T, TK> : IRepository<T,TK> where T : class, IObjectWithState
+    public class BaseRepository<T, TK> : IRepository<T, TK> where T : class, IObjectWithState
     {
         readonly protected NWContext _db = null;
 
@@ -122,9 +122,11 @@ namespace Northwind.Store.Data
                 .ToListAsync();
         }
 
-        public virtual Task<int> Delete(TK key)
+        public virtual async Task<int> Delete(TK key)
         {
-            return Task.FromResult(0);
+            var data = await _db.FindAsync<T>(key);
+            data.State = ModelState.Deleted;
+            return await Save(data);
         }
 
         #region Concurrencia

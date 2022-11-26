@@ -43,12 +43,12 @@ namespace Northwind.Store.UI.Web.Internet.Controllers
                 return NotFound();
             }
 
-            var toDo = await _context.Products
+            var productList = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Supplier)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
 
-            if (toDo == null)
+            if (productList == null)
             {
                 return NotFound();
             }
@@ -56,7 +56,7 @@ namespace Northwind.Store.UI.Web.Internet.Controllers
             var cartItems = _ss.CartTotalItems ?? "0";
             ViewBag.cartTotalItems = cartItems;
 
-            return View(toDo);
+            return View(productList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

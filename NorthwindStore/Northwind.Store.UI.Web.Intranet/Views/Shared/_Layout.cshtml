@@ -46,15 +46,16 @@
                                 Admin
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a></li>
                                 <li><a class="dropdown-item" asp-area="Admin" asp-controller="Customer" asp-action="Index">Customers</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Employee" asp-action="Index">Employee</a></li>
                                 <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a></li>
                                 <li><a class="dropdown-item" asp-area="Admin" asp-controller="Region" asp-action="Index">Regions</a></li>
                                 <li><a class="dropdown-item" asp-area="Admin" asp-controller="Shipper" asp-action="Index">Shippers</a></li>
                                 <li><a class="dropdown-item" asp-area="Admin" asp-controller="Supplier" asp-action="Index">Suppliers</a></li>
                                 <li><a class="dropdown-item" asp-area="Admin" asp-controller="Territory" asp-action="Index">Territories</a></li>
                                 <li><a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a></li>
-                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="OrderDetail" asp-action="Index">Order Details</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a></li>
+                                @*<li><a class="dropdown-item" asp-area="Admin" asp-controller="OrderDetail" asp-action="Index">Order Details</a></li>*@
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -78,10 +79,10 @@
         </div>
     </footer>
 
-    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>*@
-
+    @*    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    *@
     <environment include="Development">
         <script src="~/lib/jquery/jquery.js"></script>
         <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
@@ -89,16 +90,19 @@
     </environment>
 
     <environment exclude="Development">
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js" 
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"
                 asp-fallback-src="~/lib/jquery/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
+
+@*                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"
+        asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.min.js"
+        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"></script>*@
+
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

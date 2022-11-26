@@ -1,7 +1,10 @@
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Data.deps.json
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Data.runtimeconfig.json
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Data.dll
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Data.pdb
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Model.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Notification.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Notification.pdb
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Model.pdb
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\Northwind.Store.Data.csproj.AssemblyReference.cache
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\Northwind.Store.Data.GeneratedMSBuildEditorConfig.editorconfig
@@ -12,8 +15,5 @@ C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\Northwind.S
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\Northwind.Store.Data.dll
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\refint\Northwind.Store.Data.dll
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\Northwind.Store.Data.pdb
-C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\ref\Northwind.Store.Data.dll
-C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Data.runtimeconfig.json
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\Northwind.Store.Data.genruntimeconfig.cache
-C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Notification.dll
-C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Debug\net6.0\Northwind.Store.Notification.pdb
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Debug\net6.0\ref\Northwind.Store.Data.dll

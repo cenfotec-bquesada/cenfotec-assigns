@@ -24,12 +24,16 @@ namespace Northwind.Store.Model
 
         public class CategoryMetadata
         {
-            [Display(Name = "Nombre de Categoria")]
+            [Display(Name = "Nombre de Categoría")]
+            [Required(ErrorMessage = "La {0} es requerida.")]
+            [StringLength(15, MinimumLength = 4, ErrorMessage = "Se requiere entre {2} y {1} caracteres.")]
             public string CategoryName { get; set; } = null!;
-            [Display(Name = "Descripcion")]
+
+            [Display(Name = "Descripción")]
             [Required(ErrorMessage = "La {0} es requerida.")]
             [StringLength(32, MinimumLength = 4, ErrorMessage = "Se requiere entre {2} y {1} caracteres.")]
             public string? Description { get; set; }
+
             [Display(Name = "Imagen")]
             public byte[]? Picture { get; set; }
         }

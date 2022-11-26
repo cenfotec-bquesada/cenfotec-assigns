@@ -13,31 +13,28 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
     [Area("Admin")]
     public class ShipperController : Controller
     {
-        private readonly NWContext _context;
+        private readonly BaseRepository<Shipper, int> _repo;
 
-        public ShipperController(NWContext context)
+        public ShipperController(BaseRepository<Shipper, int> repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: Shipper
         public async Task<IActionResult> Index()
         {
-              return _context.Shippers != null ? 
-                          View(await _context.Shippers.ToListAsync()) :
-                          Problem("Entity set 'NWContext.Shippers'  is null.");
+            return View(await _repo.GetList());
         }
 
         // GET: Shipper/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Shippers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var shipper = await _context.Shippers
-                .FirstOrDefaultAsync(m => m.ShipperId == id);
+            var shipper = await _repo.Get(id.Value);
             if (shipper == null)
             {
                 return NotFound();
@@ -61,8 +58,8 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(shipper);
-                await _context.SaveChangesAsync();
+                shipper.State = Model.ModelState.Added;
+                await _repo.Save(shipper);
                 return RedirectToAction(nameof(Index));
             }
             return View(shipper);
@@ -71,12 +68,12 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // GET: Shipper/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Shippers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var shipper = await _context.Shippers.FindAsync(id);
+            var shipper = await _repo.Get(id.Value);
             if (shipper == null)
             {
                 return NotFound();
@@ -98,22 +95,9 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(shipper);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ShipperExists(shipper.ShipperId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                shipper.State = Model.ModelState.Modified;
+                await _repo.Save(shipper);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(shipper);
@@ -122,13 +106,13 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // GET: Shipper/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Shippers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var shipper = await _context.Shippers
-                .FirstOrDefaultAsync(m => m.ShipperId == id);
+            var shipper = await _repo.Get(id.Value);
+
             if (shipper == null)
             {
                 return NotFound();
@@ -142,23 +126,8 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Shippers == null)
-            {
-                return Problem("Entity set 'NWContext.Shippers'  is null.");
-            }
-            var shipper = await _context.Shippers.FindAsync(id);
-            if (shipper != null)
-            {
-                _context.Shippers.Remove(shipper);
-            }
-            
-            await _context.SaveChangesAsync();
+            await _repo.Delete(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ShipperExists(int id)
-        {
-          return (_context.Shippers?.Any(e => e.ShipperId == id)).GetValueOrDefault();
         }
     }
 }

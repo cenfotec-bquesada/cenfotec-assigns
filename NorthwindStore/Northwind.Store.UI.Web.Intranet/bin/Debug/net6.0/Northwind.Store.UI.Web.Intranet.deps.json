@@ -17,6 +17,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
           "Northwind.Store.Data": "1.0.0",
           "Northwind.Store.Model": "1.0.0",
+          "Northwind.Store.Notification": "1.0.0",
           "X.PagedList.Mvc.Core": "8.4.3"
         },
         "runtime": {

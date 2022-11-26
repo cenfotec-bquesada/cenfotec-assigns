@@ -59,6 +59,13 @@
                 </label>
             </div>
             <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                <img style="max-height: 50px" src="@Url.Action("ReadImage", new { id = Model.ProductId })"
+                     alt="Imagen de @Model.ProductName" />
+                <input asp-for="Picture" type="file" class="form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

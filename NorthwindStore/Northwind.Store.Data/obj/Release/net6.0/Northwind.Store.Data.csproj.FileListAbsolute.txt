@@ -15,3 +15,5 @@ C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Release\net6.0\refint\No
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Release\net6.0\Northwind.Store.Data.pdb
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Release\net6.0\Northwind.Store.Data.genruntimeconfig.cache
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\obj\Release\net6.0\ref\Northwind.Store.Data.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Release\net6.0\Northwind.Store.Notification.dll
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Data\bin\Release\net6.0\Northwind.Store.Notification.pdb

@@ -10,33 +10,32 @@ using Northwind.Store.Model;
 
 namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CustomerController : Controller
     {
-        private readonly NWContext _context;
+        //BaseRepo does not work well with table key string
+        private readonly BaseRepository<Customer, string> _repo;
 
-        public CustomerController(NWContext context)
+        public CustomerController(BaseRepository<Customer, string> repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: Customer
         public async Task<IActionResult> Index()
         {
-              return _context.Customers != null ? 
-                          View(await _context.Customers.ToListAsync()) :
-                          Problem("Entity set 'NWContext.Customers'  is null.");
+            return View(await _repo.GetList());
         }
 
         // GET: Customer/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = await _repo.Get(id);
             if (customer == null)
             {
                 return NotFound();
@@ -56,12 +55,12 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Customer,PostalCode,Country,Phone,Fax")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
+                customer.State = Model.ModelState.Added;
+                await _repo.Save(customer);
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);
@@ -70,12 +69,12 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // GET: Customer/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _repo.Get(id);
             if (customer == null)
             {
                 return NotFound();
@@ -88,7 +87,7 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax")] Customer customer)
+        public async Task<IActionResult> Edit(string id, [Bind("CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Customer,PostalCode,Country,Phone,Fax")] Customer customer)
         {
             if (id != customer.CustomerId)
             {
@@ -97,22 +96,9 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomerExists(customer.CustomerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                customer.State = Model.ModelState.Modified;
+                await _repo.Save(customer);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);
@@ -121,13 +107,13 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // GET: Customer/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = await _repo.Get(id);
+
             if (customer == null)
             {
                 return NotFound();
@@ -141,23 +127,8 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Customers == null)
-            {
-                return Problem("Entity set 'NWContext.Customers'  is null.");
-            }
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer != null)
-            {
-                _context.Customers.Remove(customer);
-            }
-            
-            await _context.SaveChangesAsync();
+            await _repo.Delete(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool CustomerExists(string id)
-        {
-          return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
         }
     }
 }

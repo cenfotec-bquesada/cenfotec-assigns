@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.QuantityPerUnit)
             </th>
             <th>
@@ -47,6 +50,10 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                    <img style="max-height: 50px" src="@Url.Action("ReadImage", new { id = item.ProductId })"
+                     alt="Imagen de @item.ProductName" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.QuantityPerUnit)

@@ -28,6 +28,12 @@
                     EmployeeId
                 </th>
                 <th>
+                    Total items
+                </th>
+                <th>
+                    Total $
+                </th>
+                <th>
                     OrderDate
                 </th>
                 <th>
@@ -75,6 +81,19 @@
                     </td>
                     <td>
                         @item.EmployeeId
+                    </td>
+                    <td>
+                        @item.OrderDetails.Count()
+                    </td>
+                    <td>
+                        @{
+                            decimal totalAmount = 0;
+                            foreach (var orderItem in item.OrderDetails)
+                            {
+                                totalAmount += orderItem.UnitPrice;
+                            }
+                        }
+                        @totalAmount
                     </td>
                     <td>
                         @item.OrderDate

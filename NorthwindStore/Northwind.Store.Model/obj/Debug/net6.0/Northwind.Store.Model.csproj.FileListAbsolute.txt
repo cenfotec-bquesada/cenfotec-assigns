@@ -1,4 +1,5 @@
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Debug\net6.0\Northwind.Store.Model.deps.json
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Debug\net6.0\Northwind.Store.Model.runtimeconfig.json
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Debug\net6.0\Northwind.Store.Model.dll
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Debug\net6.0\Northwind.Store.Model.pdb
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\Northwind.Store.Model.csproj.AssemblyReference.cache
@@ -9,6 +10,5 @@ C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\Northwind.
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\Northwind.Store.Model.dll
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\refint\Northwind.Store.Model.dll
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\Northwind.Store.Model.pdb
-C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\ref\Northwind.Store.Model.dll
-C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\bin\Debug\net6.0\Northwind.Store.Model.runtimeconfig.json
 C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\Northwind.Store.Model.genruntimeconfig.cache
+C:\Git\cenfotec\NorthwindStore\Northwind.Store.Model\obj\Debug\net6.0\ref\Northwind.Store.Model.dll
