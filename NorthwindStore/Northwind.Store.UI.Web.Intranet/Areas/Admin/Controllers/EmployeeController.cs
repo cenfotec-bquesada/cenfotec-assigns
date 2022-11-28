@@ -86,7 +86,7 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Employee,PostalCode,Country,HomePhone,Extension,Photo,Notes,ReportsTo,PhotoPath")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Employee,PostalCode,Country,HomePhone,Extension,Photo,Notes,ReportsTo,PhotoPath,RowVersion,ModifiedProperties")] Employee employee)
         {
             if (id != employee.EmployeeId)
             {

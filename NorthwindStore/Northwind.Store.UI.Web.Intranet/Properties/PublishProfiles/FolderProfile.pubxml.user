@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Git\cenfotec\NorthwindStore\Northwind.Store.UI.Web.Intranet\bin\Release\net6.0\publish\</_PublishTargetUrl>
-    <History>True|2022-11-22T22:29:44.6786220Z;True|2022-11-22T16:28:39.6733504-06:00;True|2022-11-22T16:25:19.5612018-06:00;True|2022-10-18T16:05:34.6910502-06:00;</History>
+    <History>True|2022-11-28T22:22:00.9148049Z;True|2022-11-22T16:29:44.6786220-06:00;True|2022-11-22T16:28:39.6733504-06:00;True|2022-11-22T16:25:19.5612018-06:00;True|2022-10-18T16:05:34.6910502-06:00;</History>
   </PropertyGroup>
 </Project>

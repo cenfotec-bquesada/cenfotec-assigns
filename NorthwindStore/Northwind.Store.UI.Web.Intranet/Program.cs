@@ -33,12 +33,12 @@ builder.Services.AddAuthorization(options =>
 });
 #endregion
 
-builder.Services.AddTransient<BaseRepository<Customer, int>>();
 builder.Services.AddTransient<BaseRepository<Employee, int>>();
 builder.Services.AddTransient<BaseRepository<Region, int>>();
 builder.Services.AddTransient<BaseRepository<Shipper, int>>();
 builder.Services.AddTransient<BaseRepository<Supplier, int>>();
-builder.Services.AddTransient<BaseRepository<Territory, int>>();
+builder.Services.AddTransient<TerritoryRepository>();
+builder.Services.AddTransient<CustomerRepository>();
 builder.Services.AddTransient<ProductRepository>();
 builder.Services.AddTransient<OrderRepository>();
 builder.Services.AddTransient<CategoryRepository>(); // Instancia por controllador

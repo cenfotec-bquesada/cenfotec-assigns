@@ -13,10 +13,9 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
     [Area("Admin")]
     public class CustomerController : Controller
     {
-        //BaseRepo does not work well with table key string
-        private readonly BaseRepository<Customer, string> _repo;
+        private readonly CustomerRepository _repo;
 
-        public CustomerController(BaseRepository<Customer, string> repo)
+        public CustomerController(CustomerRepository repo)
         {
             _repo = repo;
         }
@@ -87,7 +86,7 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Customer,PostalCode,Country,Phone,Fax")] Customer customer)
+        public async Task<IActionResult> Edit(string id, [Bind("CustomerId,CompanyName,ContactName,ContactTitle,Address,City,Customer,PostalCode,Country,Phone,Fax,RowVersion,ModifiedProperties")] Customer customer)
         {
             if (id != customer.CustomerId)
             {

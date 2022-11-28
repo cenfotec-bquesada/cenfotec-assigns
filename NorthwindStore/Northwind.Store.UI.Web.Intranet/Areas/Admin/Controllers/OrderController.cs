@@ -11,56 +11,48 @@ using X.PagedList;
 
 namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
 {
+    //[Authorize]
     [Area("Admin")]
     public class OrderController : Controller
     {
-        private readonly NWContext _context;
 
-        public OrderController(NWContext context)
+        private readonly OrderRepository _repo;
+
+        public OrderController(OrderRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: Order
-        public IActionResult Index(int? page)
+        public async Task<IActionResult> Index(int? page)
         {
             var pageNumber = page ?? 1;
 
-            var orders = _context.Orders
-                .Include(o => o.OrderDetails)
-                .ToPagedList(pageNumber, 10);
+            var orders = await _repo.GetList();
 
-            return View(orders);
+            return View(orders.ToPagedList(pageNumber, 10));
         }
 
         // GET: Order/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Orders == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .Include(o => o.OrderDetails)
-                .Include(o => o.Customer)
-                .Include(o => o.Employee)
-                .Include(o => o.ShipViaNavigation)
-                .FirstOrDefaultAsync(m => m.OrderId == id);
-            if (order == null)
+            var category = await _repo.Get(id.Value);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(order);
+            return View(category);
         }
 
         // GET: Order/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName");
-            ViewData["ShipVia"] = new SelectList(_context.Shippers, "ShipperId", "CompanyName");
             return View();
         }
 
@@ -73,32 +65,26 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
+                order.State = Model.ModelState.Added;
+                await _repo.Save(order);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", order.EmployeeId);
-            ViewData["ShipVia"] = new SelectList(_context.Shippers, "ShipperId", "CompanyName", order.ShipVia);
             return View(order);
         }
 
         // GET: Order/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Orders == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders.FindAsync(id);
+            var order = await _repo.Get(id.Value);
             if (order == null)
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", order.EmployeeId);
-            ViewData["ShipVia"] = new SelectList(_context.Shippers, "ShipperId", "CompanyName", order.ShipVia);
             return View(order);
         }
 
@@ -107,7 +93,7 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,EmployeeId,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,EmployeeId,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry,RowVersion,ModifiedProperties,RowVersion,ModifiedProperties")] Order order)
         {
             if (id != order.OrderId)
             {
@@ -116,73 +102,30 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(order);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OrderExists(order.OrderId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                order.State = Model.ModelState.Modified;
+                await _repo.Save(order);
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employees, "EmployeeId", "FirstName", order.EmployeeId);
-            ViewData["ShipVia"] = new SelectList(_context.Shippers, "ShipperId", "CompanyName", order.ShipVia);
             return View(order);
         }
 
         // GET: Order/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Orders == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .Include(o => o.Customer)
-                .Include(o => o.Employee)
-                .Include(o => o.ShipViaNavigation)
-                .FirstOrDefaultAsync(m => m.OrderId == id);
+            var order = await _repo.Get(id.Value);
+
             if (order == null)
             {
                 return NotFound();
             }
 
             return View(order);
-        }
-
-        // POST: Order/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Orders == null)
-            {
-                return Problem("Entity set 'NWContext.Orders'  is null.");
-            }
-            var order = await _context.Orders.FindAsync(id);
-            if (order != null)
-            {
-                _context.Orders.Remove(order);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool OrderExists(int id)
-        {
-          return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
         }
     }
 }

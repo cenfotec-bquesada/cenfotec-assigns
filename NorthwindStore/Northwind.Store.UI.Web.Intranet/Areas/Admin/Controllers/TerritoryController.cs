@@ -13,10 +13,9 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
     [Area("Admin")]
     public class TerritoryController : Controller
     {
-        //BaseRepo does not work well with table key string
-        private readonly BaseRepository<Territory, string> _repo;
+        private readonly TerritoryRepository _repo;
 
-        public TerritoryController(BaseRepository<Territory, string> repo)
+        public TerritoryController(TerritoryRepository repo)
         {
             _repo = repo;
         }
@@ -87,7 +86,7 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("TerritoryId,TerritoryDescription,TerritoryId")] Territory territory)
+        public async Task<IActionResult> Edit(string id, [Bind("TerritoryId,TerritoryDescription,TerritoryId,RowVersion,ModifiedProperties")] Territory territory)
         {
             if (id != territory.TerritoryId)
             {

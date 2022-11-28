@@ -86,7 +86,7 @@ namespace Northwind.Store.UI.Web.Intranet.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RegionId,RegionDescription")] Region region)
+        public async Task<IActionResult> Edit(int id, [Bind("RegionId,RegionDescription,RowVersion,ModifiedProperties")] Region region)
         {
             if (id != region.RegionId)
             {

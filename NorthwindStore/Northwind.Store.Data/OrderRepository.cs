@@ -15,7 +15,12 @@ namespace Northwind.Store.Data
 
         public override async Task<Order> Get(int key)
         {
-            var result = await base.Get(key);
+            var result = await _db.Orders
+                .Include(o => o.OrderDetails)
+                .Include(o => o.Customer)
+                .Include(o => o.Employee)
+                .Include(o => o.ShipViaNavigation)
+                .FirstOrDefaultAsync(m => m.OrderId == key);
 
             return result;
         }

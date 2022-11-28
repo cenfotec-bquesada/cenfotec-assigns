@@ -13,6 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TerritoryId" />
+            <input type="hidden" asp-for="RowVersion" />
             <div class="form-group">
                 <label asp-for="TerritoryDescription" class="control-label"></label>
                 <input asp-for="TerritoryDescription" class="form-control" />
